@@ -10,7 +10,6 @@ public class CompteBancaire {
 	private LocalDate dateCreation;
 	private int idBanque;
 
-
 	public int getNumCompte() {
 		return numCompte;
 	}
@@ -51,12 +50,10 @@ public class CompteBancaire {
 		this.idBanque = idBanque;
 	}
 
-
 //	@Override
 	public String toString() {
-		return "CompteBanquaire [numCompte=" + 
-	numCompte + ", \nproprietaire=" + proprietaire.toUpperCase() + "\nsolde=" + solde
-				+ ", dateCreation=" + dateCreation + ", idBanque=" + idBanque + "]";
+		return "CompteBanquaire [numCompte=" + numCompte + ", \nproprietaire=" + proprietaire.toUpperCase() + ", \nsolde="
+				+ solde + ", dateCreation=" + dateCreation + ", idBanque=" + idBanque + "]";
 	}
 
 	public CompteBancaire() {
@@ -77,28 +74,25 @@ public class CompteBancaire {
 	}
 
 	public double crediter(double montant) {
-		if(montant > 1 && montant < 1000){
+		if (montant > 1 && montant < 1000) {
 			this.solde += montant;
-		}
-		else {
-			System.out.println(" operation non autorisée");
+		} else {
+			System.out.println("Operation non autorisée.");
 		}
 		return this.solde;
 
 	}
 
 	public double debiter(double montant) {
-		if(this.solde >=  montant ) {
+		if (this.solde >= montant) {
 			this.solde -= montant;
 
 		} else {
 
-			System.out.println("Solde insuffisant ")
+			System.out.println("Solde insuffisant.");
 		}
 		return this.solde;
 
 	}
-
-
 
 }
