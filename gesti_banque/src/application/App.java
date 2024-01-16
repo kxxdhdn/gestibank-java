@@ -16,6 +16,7 @@ public class App {
 
 		System.out.println("cb1: " + cb1);
 		System.out.println("cb2: " + cb2);
+		System.out.println("banque: " + banque);
 
 
 

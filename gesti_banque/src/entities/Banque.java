@@ -2,16 +2,17 @@ package entities;
 
 public class Banque {
 
-	public int idBanque;
-	public String nomBanque;
-	public String adresseBanque;
-	public double capitalBanque;
-	public static double soldeTotalComptes;
+	private int idBanque;
+	private String nomBanque;
+	private String adresseBanque;
+	private double capitalBanque;
+	private static double soldeTotalComptes;
 	public static int nbreTotalCompte;
 
 //	@Override
 	public String toString() {
-		return "Banque [idBanque=" + idBanque + ", nomBanque=" + nomBanque + ", adresseBanque=" + adresseBanque
+		return "Banque [idBanque=" + idBanque + ", \nnomBanque=" 
+	+ nomBanque + ", \nadresseBanque=" + adresseBanque
 				+ ", capitalBanque=" + capitalBanque + "]";
 	}
 
