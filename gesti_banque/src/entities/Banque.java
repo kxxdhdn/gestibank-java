@@ -16,17 +16,20 @@ public class Banque {
 	}
 
 	public Banque() {
-		super();
+
+		nbreTotalCompte++;
+
+
 	}
 
 	public Banque(int idBanque, String nomBanque, String adresseBanque, double capitalBanque) {
-		super();
+
 		this.idBanque = idBanque;
 		this.nomBanque = nomBanque;
 		this.adresseBanque = adresseBanque;
 		this.capitalBanque = capitalBanque;
-		soldeTotalComptes++;
-		nbreTotalCompte++;
+
+
 	}
 
 }
