@@ -1,98 +1,103 @@
+/**
+ * Cette classe represente la classe Comptebancaire
+ * 
+ * 
+ * 
+ * 
+ * @author TEAMCAT
+ * @version 1.0
+ */
+
 package entities;
 
 import java.time.LocalDate;
 
 public class CompteBancaire {
+    private int numCompte;
+    private String proprietaire;
+    private double solde;
+    private LocalDate dateCreation;
+    private int idBanque;
 
-	private int numCompte;
-	private String proprietaire;
-	private double solde;
-	private LocalDate dateCreation;
-	private int idBanque;
+    public CompteBancaire() {
+        
+    }
 
-	public int getNumCompte() {
-		return numCompte;
-	}
+    public CompteBancaire(int numCompte, String proprietaire, double solde, LocalDate dateCreation, int idBanque) {
+        this.numCompte = numCompte;
+        this.proprietaire = proprietaire.toUpperCase(); 
+        this.solde = solde;
+        this.dateCreation = dateCreation;
+        this.idBanque = idBanque;
+        Banque.soldeTotalComptes += solde;
+        Banque.nbreTotalCompte++;
+    }
 
-	public void setNumCompte(int numCompte) {
-		this.numCompte = numCompte;
-	}
+    // Getters and setters
+    public int getNumCompte() {
+        return numCompte;
+    }
 
-	public String getProprietaire() {
-		return proprietaire;
-	}
+    public void setNumCompte(int numCompte) {
+        this.numCompte = numCompte;
+    }
 
-	public void setProprietaire(String proprietaire) {
-		this.proprietaire = proprietaire;
-	}
+    public String getProprietaire() {
+        return proprietaire;
+    }
 
-	public double getSolde() {
-		return solde;
-	}
+    public void setProprietaire(String proprietaire) {
+        this.proprietaire = proprietaire.toUpperCase();
+    }
 
-	public void setSolde(double solde) {
-		this.solde = solde;
-	}
+    public double getSolde() {
+        return solde;
+    }
 
-	public LocalDate getDateCreation() {
-		return dateCreation;
-	}
+    public void setSolde(double solde) {
+        this.solde = solde;
+    }
 
-	public void setDateCreation(LocalDate dateCreation) {
-		this.dateCreation = dateCreation;
-	}
+    public LocalDate getDateCreation() {
+        return dateCreation;
+    }
 
-	public int getIdBanque() {
-		return idBanque;
-	}
+    public void setDateCreation(LocalDate dateCreation) {
+        this.dateCreation = dateCreation;
+    }
 
-	public void setIdBanque(int idBanque) {
-		this.idBanque = idBanque;
-	}
+    public int getIdBanque() {
+        return idBanque;
+    }
 
-//	@Override
-	public String toString() {
-		return "CompteBanquaire [numCompte=" + numCompte + ", \nproprietaire=" + proprietaire.toUpperCase() + ", \nsolde="
-				+ solde + ", dateCreation=" + dateCreation + ", idBanque=" + idBanque + "]";
-	}
+    public void setIdBanque(int idBanque) {
+        this.idBanque = idBanque;
+    }
 
-	public CompteBancaire() {
-		super();
-	}
+    // Méthode pour créditer le solde
+    public double crediter(double montant) {
+        if (montant > 0 && montant < 1000) {
+            solde += montant;
+            Banque.soldeTotalComptes += montant;
+        } else {
+            System.out.println("Erreur : Montant invalide !");
+        }
+        return solde;
+    }
 
-	public CompteBancaire(int numCompte, String proprietaire, double solde, LocalDate dateCreation, int idBanque) {
-		super();
-		this.numCompte = numCompte;
-		this.proprietaire = proprietaire;
-//		String nom = proprietaire.toUpperCase().split(" ")[0].trim();
-//		String prenom = proprietaire.toUpperCase().split(" ")[1].trim();
-//		this.proprietaire = nom.substring(0,1) + nom.substring(1).toLowerCase() + 
-//				" " + prenom.substring(0,1) + prenom.substring(1).toLowerCase();
-		this.solde = solde;
-		this.dateCreation = dateCreation;
-		this.idBanque = idBanque;
-	}
+    // Méthode pour débiter le solde
+    public double debiter(double montant) {
+        if (montant > 0 && montant <= solde) {
+            solde -= montant;
+            Banque.soldeTotalComptes -= montant;
+        } else {
+            System.out.println("Erreur : Montant invalide ou solde insuffisant !");
+        }
+        return solde;
+    }
 
-	public double crediter(double montant) {
-		if (montant > 1 && montant < 1000) {
-			this.solde += montant;
-		} else {
-			System.out.println("Operation non autorisée.");
-		}
-		return this.solde;
-
-	}
-
-	public double debiter(double montant) {
-		if (this.solde >= montant) {
-			this.solde -= montant;
-
-		} else {
-
-			System.out.println("Solde insuffisant.");
-		}
-		return this.solde;
-
-	}
-
+    public String toString() {
+        return "CompteBancaire [numCompte=" + numCompte + ", proprietaire=" + proprietaire + ", solde=" + solde
+                + ", dateCreation=" + dateCreation + ", idBanque=" + idBanque + "]";
+    }
 }
