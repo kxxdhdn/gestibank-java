@@ -7,7 +7,57 @@ public class Banque {
 	private String adresseBanque;
 	private double capitalBanque;
 	private static double soldeTotalComptes;
-	public static int nbreTotalCompte;
+	private static int nbreTotalCompte;
+
+	public int getIdBanque() {
+		return idBanque;
+	}
+
+	public void setIdBanque(int idBanque) {
+		this.idBanque = idBanque;
+	}
+
+	public String getNomBanque() {
+		return nomBanque;
+	}
+
+	public void setNomBanque(String nomBanque) {
+		this.nomBanque = nomBanque;
+	}
+
+	public String getAdresseBanque() {
+		return adresseBanque;
+	}
+
+	public void setAdresseBanque(String adresseBanque) {
+		this.adresseBanque = adresseBanque;
+	}
+
+	public double getCapitalBanque() {
+		return capitalBanque;
+	}
+
+	public void setCapitalBanque(double capitalBanque) {
+		this.capitalBanque = capitalBanque;
+	}
+
+	public static double getSoldeTotalComptes() {
+		return soldeTotalComptes;
+	}
+
+	public static void setSoldeTotalComptes(double soldeTotalComptes) {
+		Banque.soldeTotalComptes = soldeTotalComptes;
+	}
+
+	public static int getNbreTotalCompte() {
+		return nbreTotalCompte;
+	}
+
+	public static void setNbreTotalCompte(int nbreTotalCompte) {
+		Banque.nbreTotalCompte = nbreTotalCompte;
+	}
+
+
 
 //	@Override
 	public String toString() {
