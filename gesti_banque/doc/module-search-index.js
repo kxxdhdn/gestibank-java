@@ -1,0 +1,1 @@
+moduleSearchIndex = [{"l":"gesti_banque"}];updateSearchResults();
