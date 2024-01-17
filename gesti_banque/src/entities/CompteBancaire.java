@@ -30,10 +30,14 @@ public class CompteBancaire {
 		return solde;
 	}
 
+//	public void setSolde(double solde) {
+//		this.solde = solde;
+////		Banque.soldeTotalComptes += this.solde;
+//		Banque.setSoldeTotalComptes(Banque.getSoldeTotalComptes() + this.solde);
+//	}
+	
 	public void setSolde(double solde) {
 		this.solde = solde;
-//		Banque.soldeTotalComptes += this.solde;
-		Banque.setSoldeTotalComptes(Banque.getSoldeTotalComptes() + this.solde);
 	}
 
 	public LocalDate getDateCreation() {
@@ -65,8 +69,8 @@ public class CompteBancaire {
 //		Banque.soldeTotalComptes += this.solde;
 
 		// VERSION 2 : avec encapsulation
-		Banque.setNbreTotalCompte(Banque.getNbreTotalCompte() + 1);
-//		Banque.setSoldeTotalComptes(Banque.getSoldeTotalComptes() + this.solde);
+//		Banque.setNbreTotalCompte(Banque.getNbreTotalCompte() + 1);
+////		Banque.setSoldeTotalComptes(Banque.getSoldeTotalComptes() + this.solde);
 	}
 
 	public CompteBancaire(int numCompte, String proprietaire, double solde, LocalDate dateCreation, int idBanque) {
@@ -86,8 +90,8 @@ public class CompteBancaire {
 //		Banque.soldeTotalComptes += this.solde;
 
 		// VERSION 2 : avec encapsulation
-		Banque.setNbreTotalCompte(Banque.getNbreTotalCompte() + 1);
-		Banque.setSoldeTotalComptes(Banque.getSoldeTotalComptes() + this.solde);
+//		Banque.setNbreTotalCompte(Banque.getNbreTotalCompte() + 1);
+//		Banque.setSoldeTotalComptes(Banque.getSoldeTotalComptes() + this.solde);
 
 	}
 
