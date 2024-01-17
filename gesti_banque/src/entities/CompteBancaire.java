@@ -32,6 +32,8 @@ public class CompteBancaire {
 
 	public void setSolde(double solde) {
 		this.solde = solde;
+//		Banque.soldeTotalComptes += this.solde;
+		Banque.setSoldeTotalComptes(Banque.getSoldeTotalComptes() + this.solde);
 	}
 
 	public LocalDate getDateCreation() {
@@ -50,18 +52,25 @@ public class CompteBancaire {
 		this.idBanque = idBanque;
 	}
 
-//	@Override
+	@Override
 	public String toString() {
-		return "CompteBanquaire [numCompte=" + numCompte + ", \nproprietaire=" + proprietaire.toUpperCase() + ", \nsolde="
-				+ solde + ", dateCreation=" + dateCreation + ", idBanque=" + idBanque + "]";
+		return "CompteBanquaire [\nnumCompte=" + numCompte + ", \nproprietaire=" + proprietaire.toUpperCase()
+				+ ", \nsolde=" + solde + ", \ndateCreation=" + dateCreation + ", \nidBanque=" + idBanque + "\n]";
 	}
 
 	public CompteBancaire() {
-		super();
+
+		// VERSION 1 : sans encapsulation
+//		Banque.nbreTotalCompte++;
+//		Banque.soldeTotalComptes += this.solde;
+
+		// VERSION 2 : avec encapsulation
+		Banque.setNbreTotalCompte(Banque.getNbreTotalCompte() + 1);
+//		Banque.setSoldeTotalComptes(Banque.getSoldeTotalComptes() + this.solde);
 	}
 
 	public CompteBancaire(int numCompte, String proprietaire, double solde, LocalDate dateCreation, int idBanque) {
-		super();
+
 		this.numCompte = numCompte;
 		this.proprietaire = proprietaire;
 //		String nom = proprietaire.toUpperCase().split(" ")[0].trim();
@@ -71,25 +80,34 @@ public class CompteBancaire {
 		this.solde = solde;
 		this.dateCreation = dateCreation;
 		this.idBanque = idBanque;
+		
+		// VERSION 1 : sans encapsulation
+//		Banque.nbreTotalCompte++;
+//		Banque.soldeTotalComptes += this.solde;
+
+		// VERSION 2 : avec encapsulation
+		Banque.setNbreTotalCompte(Banque.getNbreTotalCompte() + 1);
+		Banque.setSoldeTotalComptes(Banque.getSoldeTotalComptes() + this.solde);
+
 	}
 
 	public double crediter(double montant) {
-		if (montant > 1 && montant < 1000) {
+		if (montant >= 1 && montant <= 1000) {
 			this.solde += montant;
+			System.out.println("Ajout de solde avec succès.");
 		} else {
-			System.out.println("Operation non autorisée.");
+			System.out.println("Opération non autorisée car le montant est invalide.");
 		}
 		return this.solde;
 
 	}
 
 	public double debiter(double montant) {
-		if (this.solde >= montant) {
+		if (montant >= 1 && montant <= this.solde) {
 			this.solde -= montant;
-
+			System.out.println("Débit de solde avec succès.");
 		} else {
-
-			System.out.println("Solde insuffisant.");
+			System.out.println("Solde insuffisant ou le montant est invalide.");
 		}
 		return this.solde;
 
