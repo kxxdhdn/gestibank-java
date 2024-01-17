@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.ArrayList;
+
 public class Banque {
 
 	private int idBanque;
@@ -14,6 +16,27 @@ public class Banque {
 	// Cas de plusieurs banque
 	private double soldeTotalComptes;
 	private int nbreTotalCompte;
+
+	// Partie 2 début
+	private ArrayList<CompteBancaire> comptesBancaires = new ArrayList<>();
+	
+
+	public ArrayList<CompteBancaire> getComptesBancaires() {
+		return comptesBancaires;
+	}
+
+//	public void setComptesBancaires(ArrayList<CompteBancaire> comptesBancaires) {
+//		this.comptesBancaires = comptesBancaires;
+//	}
+	
+	public void addComptesBancaires(CompteBancaire cb) {
+		this.comptesBancaires.add(cb);
+	}
+	
+	public void rmComptesBancaires(CompteBancaire cb) {
+		this.comptesBancaires.remove(cb);
+	}
+	// Partie 2 fin
 
 	public int getIdBanque() {
 		return idBanque;
@@ -58,8 +81,7 @@ public class Banque {
 	 * public static void setNbreTotalCompte(int nbreTotalCompte) {
 	 * Banque.nbreTotalCompte = nbreTotalCompte; }
 	 * 
-	 * @Override 
-	 * public String toString() { return "Banque [\nidBanque=" + idBanque
+	 * @Override public String toString() { return "Banque [\nidBanque=" + idBanque
 	 * + ", \nnomBanque=" + nomBanque + ", \nadresseBanque=" + adresseBanque +
 	 * ", \ncapitalBanque=" + capitalBanque + "\n]"; }
 	 */
@@ -79,12 +101,12 @@ public class Banque {
 	public void setNbreTotalCompte(int nbreTotalCompte) {
 		this.nbreTotalCompte = nbreTotalCompte;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Banque [\nidBanque=" + idBanque + ", \nnomBanque=" + nomBanque + ", \nadresseBanque=" + adresseBanque
-				+ ", \ncapitalBanque=" + capitalBanque + ", \nsoldeTotalComptes=" + soldeTotalComptes + ", \nnbreTotalCompte="
-				+ nbreTotalCompte + "\n]";
+				+ ", \ncapitalBanque=" + capitalBanque + ", \nsoldeTotalComptes=" + soldeTotalComptes
+				+ ", \nnbreTotalCompte=" + nbreTotalCompte + "\n]";
 	}
 
 	public Banque() {
