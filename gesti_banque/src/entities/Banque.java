@@ -1,7 +1,6 @@
 package entities;
 
 import java.time.LocalDate;
-import java.util.Scanner;
 
 public class Banque {
 
@@ -9,6 +8,8 @@ public class Banque {
 	private String nomBanque;
 	private String adresseBanque;
 	private double capitalBanque;
+	
+	// Cas d'une seule banque = GK_Gestibanque
 	private static double soldeTotalComptes;
 	private static int nbreTotalCompte;
 
@@ -60,15 +61,13 @@ public class Banque {
 		Banque.nbreTotalCompte = nbreTotalCompte;
 	}
 
-//	@Override
+	@Override
 	public String toString() {
-		return "Banque [idBanque=" + idBanque + ", \nnomBanque=" + nomBanque + ", \nadresseBanque=" + adresseBanque
-				+ ", capitalBanque=" + capitalBanque + "]";
+		return "Banque [\nidBanque=" + idBanque + ", \nnomBanque=" + nomBanque + ", \nadresseBanque=" + adresseBanque
+				+ ", \ncapitalBanque=" + capitalBanque + "\n]";
 	}
 
 	public Banque() {
-
-		nbreTotalCompte++;
 
 	}
 
@@ -79,31 +78,6 @@ public class Banque {
 		this.adresseBanque = adresseBanque;
 		this.capitalBanque = capitalBanque;
 
-	}
-
-	public static CompteBancaire creerCompteViaClavier() {
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Entrez le numero du compte : ");
-		int numCompte = scanner.nextInt();
-		scanner.nextLine();
-		System.out.println("Entrez le nom et prenom de proprietaire du compte : ");
-		String proprietaire = scanner.nextLine();
-		System.out.println("Entrer le solde du compte : ");
-		double solde = scanner.nextDouble();
-//		System.out.println("Entrer la date de la création du compte : ");
-//		String dateCreation = scanner.nextLine();
-		LocalDate dateCreation = LocalDate.now();
-//		System.out.println("Entrez la date de creation");
-//		String creationDate = scanner.nextString();
-//		LocalDate localCreationDate = LocalDate.of(creationDate.split(" ")[0], creationDate.split(" ")[1], creationDate.split(" ")[2])
-		System.out.println("Entrer l'ID de la banque du compte : ");
-		int idBanque = scanner.nextInt();
-		CompteBancaire cb = new CompteBancaire(numCompte, proprietaire, solde, 
-//				LocalDate.of(dateCreation(0,4), dateCreation(4,6), dateCreation(6))
-				dateCreation, idBanque);
-		scanner.close();
-		
-		return cb;
 	}
 
 }
