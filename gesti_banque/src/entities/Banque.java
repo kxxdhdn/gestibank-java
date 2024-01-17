@@ -1,17 +1,19 @@
 package entities;
 
-import java.time.LocalDate;
-
 public class Banque {
 
 	private int idBanque;
 	private String nomBanque;
 	private String adresseBanque;
 	private double capitalBanque;
-	
+
 	// Cas d'une seule banque = GK_Gestibanque
-	private static double soldeTotalComptes;
-	private static int nbreTotalCompte;
+//	private static double soldeTotalComptes;
+//	private static int nbreTotalCompte;
+
+	// Cas de plusieurs banque
+	private double soldeTotalComptes;
+	private int nbreTotalCompte;
 
 	public int getIdBanque() {
 		return idBanque;
@@ -45,26 +47,44 @@ public class Banque {
 		this.capitalBanque = capitalBanque;
 	}
 
-	public static double getSoldeTotalComptes() {
+	/*
+	 * public static double getSoldeTotalComptes() { return soldeTotalComptes; }
+	 * 
+	 * public static void setSoldeTotalComptes(double soldeTotalComptes) {
+	 * Banque.soldeTotalComptes = soldeTotalComptes; }
+	 * 
+	 * public static int getNbreTotalCompte() { return nbreTotalCompte; }
+	 * 
+	 * public static void setNbreTotalCompte(int nbreTotalCompte) {
+	 * Banque.nbreTotalCompte = nbreTotalCompte; }
+	 * 
+	 * @Override 
+	 * public String toString() { return "Banque [\nidBanque=" + idBanque
+	 * + ", \nnomBanque=" + nomBanque + ", \nadresseBanque=" + adresseBanque +
+	 * ", \ncapitalBanque=" + capitalBanque + "\n]"; }
+	 */
+
+	public double getSoldeTotalComptes() {
 		return soldeTotalComptes;
 	}
 
-	public static void setSoldeTotalComptes(double soldeTotalComptes) {
-		Banque.soldeTotalComptes = soldeTotalComptes;
+	public void setSoldeTotalComptes(double soldeTotalComptes) {
+		this.soldeTotalComptes = soldeTotalComptes;
 	}
 
-	public static int getNbreTotalCompte() {
+	public int getNbreTotalCompte() {
 		return nbreTotalCompte;
 	}
 
-	public static void setNbreTotalCompte(int nbreTotalCompte) {
-		Banque.nbreTotalCompte = nbreTotalCompte;
+	public void setNbreTotalCompte(int nbreTotalCompte) {
+		this.nbreTotalCompte = nbreTotalCompte;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Banque [\nidBanque=" + idBanque + ", \nnomBanque=" + nomBanque + ", \nadresseBanque=" + adresseBanque
-				+ ", \ncapitalBanque=" + capitalBanque + "\n]";
+				+ ", \ncapitalBanque=" + capitalBanque + ", \nsoldeTotalComptes=" + soldeTotalComptes + ", \nnbreTotalCompte="
+				+ nbreTotalCompte + "\n]";
 	}
 
 	public Banque() {
