@@ -50,6 +50,7 @@ public class SaisieClavier {
 		// Mise à jour des infos de la banque correspondante
 		banque.setNbreTotalCompte(banque.getNbreTotalCompte() + 1);
 		banque.setSoldeTotalComptes(banque.getSoldeTotalComptes() + cb.getSolde());
+		banque.addComptesBancaires(cb);
 
 		return cb;
 	}

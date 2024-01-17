@@ -3,6 +3,7 @@ package application;
 import entities.Banque;
 import entities.CompteBancaire;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
@@ -53,8 +54,26 @@ public class App {
 		sc.close();
 
 		// Question 15
-		Banque[] banques = { banque1, banque2 };
-		SaisieClavier.afficherBanqueGrandSolde(banques);
+//		Banque[] banques = { banque1, banque2 };
+//		SaisieClavier.afficherBanqueGrandSolde(banques);
+		
+		// Partie 2 (Les collections)
+		ArrayList<Banque> banques  = new ArrayList<>(); // tableau dynamique
+		System.out.println(banques.size()); // size = nombre d'elements
+		System.out.println(banques.isEmpty()); // boolean
+		
+		banques.add(banque1);
+		banques.add(banque2);
+		System.out.println(banques.get(0).getComptesBancaires());
+		System.out.println(banques.get(1).getComptesBancaires());
+//		banques.remove(banque2);
+//		System.out.println(banques);
+//		banques.add(0, banque2);
+//		System.out.println(banques);
+//		banques.remove(1);
+//		System.out.println(banques);
+		System.out.println(banques.size());
+		System.out.println(banques.isEmpty());
 
 	}
 
