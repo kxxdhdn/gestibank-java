@@ -1,15 +1,37 @@
 package application;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
+import java.util.Properties;
 import java.util.Scanner;
 
 public class Main {
 
-	public static void main(String[] args) throws SQLException {
+	public static void main(String[] args) throws SQLException, IOException {
+		// 0-lire l'accès de la base de données
+		String url = "";
+		String username = "";
+		String password = "";
+		try (InputStream input = Main.class.getClassLoader().getResourceAsStream("config.properties")) {
+			Properties config = new Properties();
+
+			config.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("config.properties"));
+
+			String servername = config.getProperty("servername");
+			String dbname = config.getProperty("dbname");
+			url = "jdbc:mysql://" + servername + "/" + dbname + "?autoReconnect=true&useSSL=false";
+			username = config.getProperty("username");
+			password = config.getProperty("password");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		// 1-vérification de la connexion
 		Connection con = null;
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/gestibanque2024", "root", "");
+			con = DriverManager.getConnection(url, username, password);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
