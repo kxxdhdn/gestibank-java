@@ -57,7 +57,7 @@ public class App {
 //		Banque[] banques = { banque1, banque2 };
 //		SaisieClavier.afficherBanqueGrandSolde(banques);
 		
-		// Partie 2 (Les collections)
+		// Partie 2 (Les Collections)
 		ArrayList<Banque> banques  = new ArrayList<>(); // tableau dynamique
 		System.out.println(banques.size()); // size = nombre d'elements
 		System.out.println(banques.isEmpty()); // boolean
