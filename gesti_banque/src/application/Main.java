@@ -42,15 +42,31 @@ public class Main {
 		Statement stmt = con.createStatement();
 
 		Scanner sc = new Scanner(System.in);
+
 		System.out.println("Donner votre nom : ");
 		String nomClient = sc.nextLine();
 		System.out.println("Donner votre adresse : ");
 		String adresseClient = sc.nextLine();
-		sc.close();
 
 		int result = stmt
 				.executeUpdate("insert into client(nom,adresse) values('" + nomClient + "','" + adresseClient + "')");
 		System.out.println("Nombre d'insertions : " + result); // c'est le nombre d'insertion
+
+		// Question 1 : suppresion d'un client
+		System.out.println("Donner l'ID du client à supprimer : ");
+		int idc = sc.nextInt();
+		result = stmt.executeUpdate("delete from client where ID ='" + idc + "'"); // insert, delete et update
+		System.out.println("Nombre de suppressions : " + result);
+
+		// Question 2 : mise à jour de l'adresse d'un client
+		System.out.println("Donner l'ID du client dont l'adresse est mise à jour : ");
+		idc = sc.nextInt();
+		sc.nextLine();
+		System.out.println("Donner la nouvelle adresse : ");
+		adresseClient = sc.nextLine();
+
+		result = stmt.executeUpdate("update client set adresse = '" + adresseClient + "' where id ='" + idc + "'");
+		System.out.println("Nombre d'adresses mises à jour : " + result);
 
 		// 3-affichage des elements de la base
 		ResultSet rs = stmt.executeQuery("select id, nom, adresse from client");
