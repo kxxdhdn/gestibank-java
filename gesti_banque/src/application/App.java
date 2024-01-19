@@ -18,7 +18,7 @@ public class App {
 //				100);
 		System.out.println("cb11: " + cb11);
 		// Mise à jour des infos de la banque1
-		banque1.setNbreTotalCompte(banque1.getNbreTotalCompte() + 1);
+		banque1.setNbreTotalComptes(banque1.getNbreTotalComptes() + 1);
 		banque1.setSoldeTotalComptes(banque1.getSoldeTotalComptes() + cb11.getSolde());
 
 		CompteBancaire cb12 = new CompteBancaire(20202020, "Jean Paul", 3000, LocalDate.of(2024, 1, 10),
@@ -26,15 +26,15 @@ public class App {
 //				100);
 		System.out.println("cb12: " + cb12);
 		// Mise à jour des infos de la banque1
-		banque1.setNbreTotalCompte(banque1.getNbreTotalCompte() + 1);
+		banque1.setNbreTotalComptes(banque1.getNbreTotalComptes() + 1);
 		banque1.setSoldeTotalComptes(banque1.getSoldeTotalComptes() + cb12.getSolde());
 
 		// VERSION 1 : sans encapsulation
-//		System.out.println(Banque.nbreTotalCompte);
+//		System.out.println(Banque.nbreTotalComptes);
 //		System.out.println(Banque.soldeTotalComptes);
 
 		// VERSION 2 : avec encapsulation
-//		System.out.println(Banque.getNbreTotalCompte());
+//		System.out.println(Banque.getNbreTotalComptes());
 //		System.out.println(Banque.getSoldeTotalComptes());
 		
 		System.out.println("banque1 (après l'ajout des comptes): " + banque1);
