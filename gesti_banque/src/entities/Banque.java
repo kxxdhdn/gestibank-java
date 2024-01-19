@@ -11,16 +11,15 @@ public class Banque {
 
 	// Cas d'une seule banque = GK_Gestibanque
 //	private static double soldeTotalComptes;
-//	private static int nbreTotalCompte;
+//	private static int nbreTotalComptes;
 
 	// Cas de plusieurs banque
 	private double soldeTotalComptes;
-	private int nbreTotalCompte;
+	private int nbreTotalComptes;
 
-	// Partie 2 début
+	// Partie 2 (Les Collections)
 	private ArrayList<CompteBancaire> comptesBancaires = new ArrayList<>();
 	
-
 	public ArrayList<CompteBancaire> getComptesBancaires() {
 		return comptesBancaires;
 	}
@@ -76,10 +75,10 @@ public class Banque {
 	 * public static void setSoldeTotalComptes(double soldeTotalComptes) {
 	 * Banque.soldeTotalComptes = soldeTotalComptes; }
 	 * 
-	 * public static int getNbreTotalCompte() { return nbreTotalCompte; }
+	 * public static int getNbreTotalComptes() { return nbreTotalComptes; }
 	 * 
-	 * public static void setNbreTotalCompte(int nbreTotalCompte) {
-	 * Banque.nbreTotalCompte = nbreTotalCompte; }
+	 * public static void setNbreTotalComptes(int nbreTotalComptes) {
+	 * Banque.nbreTotalComptes = nbreTotalComptes; }
 	 * 
 	 * @Override public String toString() { return "Banque [\nidBanque=" + idBanque
 	 * + ", \nnomBanque=" + nomBanque + ", \nadresseBanque=" + adresseBanque +
@@ -94,19 +93,19 @@ public class Banque {
 		this.soldeTotalComptes = soldeTotalComptes;
 	}
 
-	public int getNbreTotalCompte() {
-		return nbreTotalCompte;
+	public int getNbreTotalComptes() {
+		return nbreTotalComptes;
 	}
 
-	public void setNbreTotalCompte(int nbreTotalCompte) {
-		this.nbreTotalCompte = nbreTotalCompte;
+	public void setNbreTotalComptes(int nbreTotalComptes) {
+		this.nbreTotalComptes = nbreTotalComptes;
 	}
 
 	@Override
 	public String toString() {
 		return "Banque [\nidBanque=" + idBanque + ", \nnomBanque=" + nomBanque + ", \nadresseBanque=" + adresseBanque
 				+ ", \ncapitalBanque=" + capitalBanque + ", \nsoldeTotalComptes=" + soldeTotalComptes
-				+ ", \nnbreTotalCompte=" + nbreTotalCompte + "\n]";
+				+ ", \nnbreTotalCompte=" + nbreTotalComptes + "\n]";
 	}
 
 	public Banque() {

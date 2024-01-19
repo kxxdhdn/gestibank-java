@@ -6,6 +6,8 @@ import java.sql.*;
 import java.util.Properties;
 import java.util.Scanner;
 
+import entities.Banque;
+
 public class Main {
 
 	public static void main(String[] args) throws SQLException, IOException {
@@ -38,45 +40,73 @@ public class Main {
 		}
 		// System.out.println(con);
 
-		// 2-insertion d'un client
 		Statement stmt = con.createStatement();
 
 		Scanner sc = new Scanner(System.in);
 
-		System.out.println("Donner votre nom : ");
-		String nomClient = sc.nextLine();
-		System.out.println("Donner votre adresse : ");
-		String adresseClient = sc.nextLine();
+		/*
+		 * // 2-insertion d'un client System.out.println("Donner votre nom : "); String
+		 * nomClient = sc.nextLine(); System.out.println("Donner votre adresse : ");
+		 * String adresseClient = sc.nextLine();
+		 * 
+		 * int result = stmt .executeUpdate("insert into client(nom,adresse) values('" +
+		 * nomClient + "','" + adresseClient + "')");
+		 * System.out.println("Nombre d'insertions : " + result); // c'est le nombre
+		 * d'insertion
+		 * 
+		 * // Question 1 : suppresion d'un client
+		 * System.out.println("Donner l'ID du client à supprimer : "); int idc =
+		 * sc.nextInt();
+		 * 
+		 * result = stmt.executeUpdate("delete from client where ID ='" + idc + "'"); //
+		 * insert, delete et update System.out.println("Nombre de suppressions : " +
+		 * result);
+		 * 
+		 * // Question 2 : mise à jour de l'adresse d'un client
+		 * System.out.println("Donner l'ID du client dont l'adresse est mise à jour : "
+		 * ); idc = sc.nextInt(); sc.nextLine();
+		 * System.out.println("Donner la nouvelle adresse : "); adresseClient =
+		 * sc.nextLine();
+		 * 
+		 * result = stmt.executeUpdate("update client set adresse = '" + adresseClient +
+		 * "' where id ='" + idc + "'");
+		 * System.out.println("Nombre d'adresses mises à jour : " + result);
+		 * 
+		 * // 3-affichage des elements de la base ResultSet rs =
+		 * stmt.executeQuery("select id, nom, adresse from client");
+		 * 
+		 * while (rs.next()) { int id = rs.getInt("id"); String nom =
+		 * rs.getString("nom"); String adresse = rs.getString("adresse");
+		 * System.out.println(id + " | " + nom + " | " + adresse); }
+		 */
 
-		int result = stmt
-				.executeUpdate("insert into client(nom,adresse) values('" + nomClient + "','" + adresseClient + "')");
-		System.out.println("Nombre d'insertions : " + result); // c'est le nombre d'insertion
+		// Partie 3 (JDBC et MySQL)
+//		SaisieClavier.crudBanqueClavier(sc, stmt, "c");
+//		SaisieClavier.crudBanqueClavier(sc, stmt, "r");
+//		SaisieClavier.crudBanqueClavier(sc, stmt, "u");
+//		SaisieClavier.crudBanqueClavier(sc, stmt, "r");
+//		SaisieClavier.crudBanqueClavier(sc, stmt, "d");
+//		SaisieClavier.crudBanqueClavier(sc, stmt, "r");
 
-		// Question 1 : suppresion d'un client
-		System.out.println("Donner l'ID du client à supprimer : ");
-		int idc = sc.nextInt();
-		result = stmt.executeUpdate("delete from client where ID ='" + idc + "'"); // insert, delete et update
-		System.out.println("Nombre de suppressions : " + result);
+		Banque banque = new Banque();
+		System.out.println("Donner l'ID de la banque dont vous gérez les comptes : ");
+		int idb = sc.nextInt();
+		ResultSet rs = stmt.executeQuery("select * from banques where idBanque = '" + idb + "'");
+		System.out.println("coucou");
+		banque.setIdBanque(rs.getInt("idBanque"));
+//		banque.setNomBanque(rs.getString("nomBanque"));
+//		banque.setAdresseBanque(rs.getString("adresseBanque"));
+//		banque.setCapitalBanque(rs.getDouble("capitalBanque"));
+//		banque.setSoldeTotalComptes(rs.getDouble("soldeTotalComptes"));
+//		banque.setNbreTotalComptes(rs.getInt("nbreTotalComptes"));
+//		SaisieClavier.crudCompteClavier(sc, banque, stmt, "c");
+//		SaisieClavier.crudCompteClavier(sc, banque, stmt, "r");
+//		SaisieClavier.crudCompteClavier(sc, banque, stmt, "u");
+//		SaisieClavier.crudCompteClavier(sc, banque, stmt, "r");
+//		SaisieClavier.crudCompteClavier(sc, banque, stmt, "d");
+//		SaisieClavier.crudCompteClavier(sc, banque, stmt, "r");
 
-		// Question 2 : mise à jour de l'adresse d'un client
-		System.out.println("Donner l'ID du client dont l'adresse est mise à jour : ");
-		idc = sc.nextInt();
-		sc.nextLine();
-		System.out.println("Donner la nouvelle adresse : ");
-		adresseClient = sc.nextLine();
-
-		result = stmt.executeUpdate("update client set adresse = '" + adresseClient + "' where id ='" + idc + "'");
-		System.out.println("Nombre d'adresses mises à jour : " + result);
-
-		// 3-affichage des elements de la base
-		ResultSet rs = stmt.executeQuery("select id, nom, adresse from client");
-
-		while (rs.next()) {
-			int id = rs.getInt("id");
-			String nom = rs.getString("nom");
-			String adresse = rs.getString("adresse");
-			System.out.println(id + " | " + nom + " | " + adresse);
-		}
+		sc.close();
 	}
 
 }
