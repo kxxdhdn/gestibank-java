@@ -27,7 +27,7 @@ public class SaisieClavier {
 	}
 
 	public static CompteBancaire creerCompteClavier(Scanner sc, Banque banque) {
-		System.out.println("\n****** Saisie des informations des comptes ******\n");
+		System.out.println("\n****** Saisie des informations du compte ******\n");
 		CompteBancaire cb = new CompteBancaire(); // mise à jour du solde avec un zéro
 
 		System.out.println("Donner le numero du compte : ");
@@ -97,7 +97,7 @@ public class SaisieClavier {
 			System.out.println("\n****** Mettre à jour le capital d'une banque ******\n");
 			System.out.println("Donner l'ID de la banque dont le capital est mis à jour : ");
 			int idb = sc.nextInt();
-			System.out.println("Donner le nouvel capital : ");
+			System.out.println("Donner le nouveau capital : ");
 			double capitalBanque = sc.nextDouble();
 
 			stmt.executeUpdate(

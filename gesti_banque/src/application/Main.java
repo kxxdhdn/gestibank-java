@@ -108,6 +108,7 @@ public class Main {
 		SaisieClavier.crudCompteClavier(sc, banque, stmt, "r");
 
 		sc.close();
+		con.close();
 	}
 
 }
