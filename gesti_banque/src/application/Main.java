@@ -81,30 +81,31 @@ public class Main {
 		 */
 
 		// Partie 3 (JDBC et MySQL)
-//		SaisieClavier.crudBanqueClavier(sc, stmt, "c");
-//		SaisieClavier.crudBanqueClavier(sc, stmt, "r");
-//		SaisieClavier.crudBanqueClavier(sc, stmt, "u");
-//		SaisieClavier.crudBanqueClavier(sc, stmt, "r");
-//		SaisieClavier.crudBanqueClavier(sc, stmt, "d");
-//		SaisieClavier.crudBanqueClavier(sc, stmt, "r");
+		SaisieClavier.crudBanqueClavier(sc, stmt, "c");
+		SaisieClavier.crudBanqueClavier(sc, stmt, "r");
+		SaisieClavier.crudBanqueClavier(sc, stmt, "u");
+		SaisieClavier.crudBanqueClavier(sc, stmt, "r");
+		SaisieClavier.crudBanqueClavier(sc, stmt, "d");
+		SaisieClavier.crudBanqueClavier(sc, stmt, "r");
 
 		Banque banque = new Banque();
 		System.out.println("Donner l'ID de la banque dont vous gérez les comptes : ");
 		int idb = sc.nextInt();
 		ResultSet rs = stmt.executeQuery("select * from banques where idBanque = '" + idb + "'");
-		System.out.println("coucou");
-		banque.setIdBanque(rs.getInt("idBanque"));
-//		banque.setNomBanque(rs.getString("nomBanque"));
-//		banque.setAdresseBanque(rs.getString("adresseBanque"));
-//		banque.setCapitalBanque(rs.getDouble("capitalBanque"));
-//		banque.setSoldeTotalComptes(rs.getDouble("soldeTotalComptes"));
-//		banque.setNbreTotalComptes(rs.getInt("nbreTotalComptes"));
-//		SaisieClavier.crudCompteClavier(sc, banque, stmt, "c");
-//		SaisieClavier.crudCompteClavier(sc, banque, stmt, "r");
-//		SaisieClavier.crudCompteClavier(sc, banque, stmt, "u");
-//		SaisieClavier.crudCompteClavier(sc, banque, stmt, "r");
-//		SaisieClavier.crudCompteClavier(sc, banque, stmt, "d");
-//		SaisieClavier.crudCompteClavier(sc, banque, stmt, "r");
+		while (rs.next()) {
+			banque.setIdBanque(rs.getInt("idBanque"));
+			banque.setNomBanque(rs.getString("nomBanque"));
+			banque.setAdresseBanque(rs.getString("adresseBanque"));
+			banque.setCapitalBanque(rs.getDouble("capitalBanque"));
+			banque.setSoldeTotalComptes(rs.getDouble("soldeTotalComptes"));
+			banque.setNbreTotalComptes(rs.getInt("nbreTotalComptes"));
+		}
+		SaisieClavier.crudCompteClavier(sc, banque, stmt, "c");
+		SaisieClavier.crudCompteClavier(sc, banque, stmt, "r");
+		SaisieClavier.crudCompteClavier(sc, banque, stmt, "u");
+		SaisieClavier.crudCompteClavier(sc, banque, stmt, "r");
+		SaisieClavier.crudCompteClavier(sc, banque, stmt, "d");
+		SaisieClavier.crudCompteClavier(sc, banque, stmt, "r");
 
 		sc.close();
 	}

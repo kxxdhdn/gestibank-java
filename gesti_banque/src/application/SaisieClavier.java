@@ -152,12 +152,15 @@ public class SaisieClavier {
 			System.out.println("\n****** Mettre à jour le solde d'un compte bancaire ******\n");
 			System.out.println("Donner le numéro du compte dont le solde est mis à jour : ");
 			int idcb = sc.nextInt();
-			ResultSet rs = stmt.executeQuery(
-					"select * from comptesbancaires where numCompte = '" + idcb + "'");
-			double oldSolde = rs.getDouble("solde");
-			System.out.println("Donner le nouvel solde : ");
+			ResultSet rs = stmt.executeQuery("select * from comptesbancaires where numCompte = '" + idcb + "'");
+			double oldSolde = 0.0;
+			while (rs.next()) {
+				oldSolde = rs.getDouble("solde");
+			}
+			System.out.println("Donner le nouveau solde : ");
 			double newSolde = sc.nextDouble();
-			stmt.executeUpdate("update banque set solde = '" + newSolde + "' where numCompte ='" + idcb + "'");
+			stmt.executeUpdate(
+					"update comptesbancaires set solde = '" + newSolde + "' where numCompte ='" + idcb + "'");
 			// Mettre à jour la table banques
 			banque.setSoldeTotalComptes(banque.getSoldeTotalComptes() - oldSolde + newSolde);
 			break;
@@ -168,12 +171,16 @@ public class SaisieClavier {
 			idcb = sc.nextInt();
 			stmt.executeUpdate("delete from comptesbancaires where numCompte ='" + idcb + "'");
 			// Mettre à jour la table banques
-			rs = stmt.executeQuery(
-					"select * from comptesbancaires where numCompte = '" + idcb + "'");
+			rs = stmt.executeQuery("select * from comptesbancaires where numCompte = '" + idcb + "'");
+			idb = 0;
+			double rmSolde = 0.0;
+			while (rs.next()) {
+				idb = rs.getInt("idBanque");
+				rmSolde = rs.getDouble("solde");
+			}
 			banque.setNbreTotalComptes(banque.getNbreTotalComptes() - 1);
-			banque.setSoldeTotalComptes(banque.getSoldeTotalComptes() - rs.getDouble("solde"));
+			banque.setSoldeTotalComptes(banque.getSoldeTotalComptes() - rmSolde);
 //			banque.rmComptesBancaires(cb);
-			idb = rs.getInt("idBanque");
 			stmt.executeUpdate("update banques set soldeTotalComptes = '" + banque.getSoldeTotalComptes()
 					+ "' where idBanque ='" + idb + "'");
 			stmt.executeUpdate("update banques set nbreTotalComptes = '" + banque.getNbreTotalComptes()
@@ -182,8 +189,7 @@ public class SaisieClavier {
 
 		default:
 			System.out.println("\n****** Afficher tous les comptes bancaires ******\n");
-			rs = stmt.executeQuery(
-					"select * from comptesbancaires");
+			rs = stmt.executeQuery("select * from comptesbancaires");
 
 			while (rs.next()) {
 				int numCompte = rs.getInt("numCompte");
