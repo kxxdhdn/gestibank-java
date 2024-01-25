@@ -61,7 +61,7 @@ public class BanqueDAO {
 				+ "soldeTotalComptes,nbreTotalComptes) values('" + banque.getIdBanque() + "','" + banque.getNomBanque()
 				+ "','" + banque.getAdresseBanque() + "','" + banque.getCapitalBanque() + "','"
 				+ banque.getSoldeTotalComptes() + "','" + banque.getNbreTotalComptes() + "')");
-		System.out.println("Nombre d'insertions de banques : " + result);
+		System.out.println("Nombre d'insertions des banques : " + result);
 
 		closeConnection();
 
@@ -74,7 +74,7 @@ public class BanqueDAO {
 		// Code pour faire la mise à jour
 		int result = stmt.executeUpdate(
 				"update banques set capitalBanque = '" + newCapital + "' where idBanque ='" + idBanque + "'");
-		System.out.println("Nombre de mise à jour : " + result);
+		System.out.println("Nombre de mises à jour : " + result);
 
 		closeConnection();
 
@@ -86,7 +86,7 @@ public class BanqueDAO {
 		
 		// Code pour supprimer
 		int result = stmt.executeUpdate("delete from banques where idBanque ='" + idBanque + "'");
-		System.out.println("Nombre de supression de banques : " + result);
+		System.out.println("Nombre de supressions des banques : " + result);
 
 		closeConnection();
 
